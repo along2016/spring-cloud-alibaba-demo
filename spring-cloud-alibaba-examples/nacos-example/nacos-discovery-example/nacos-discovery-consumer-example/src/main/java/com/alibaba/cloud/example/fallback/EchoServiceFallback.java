@@ -11,4 +11,9 @@ public class EchoServiceFallback implements EchoService {
     public String echo(String str) {
         return "限流降级：" + str;
     }
+
+    @Override
+    public String provinces() {
+        return "请重新刷新页面";
+    }
 }

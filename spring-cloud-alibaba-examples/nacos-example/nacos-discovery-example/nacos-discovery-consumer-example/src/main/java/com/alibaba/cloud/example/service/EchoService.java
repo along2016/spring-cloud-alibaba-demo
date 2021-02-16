@@ -13,4 +13,7 @@ public interface EchoService {
 
     @GetMapping("/echo/{str}")
     String echo(@PathVariable("str") String str);
+
+    @GetMapping("/echo/provinces")
+    String provinces();
 }

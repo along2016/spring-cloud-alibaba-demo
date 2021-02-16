@@ -37,6 +37,16 @@ public class NacosController {
         return restTemplate.getForObject("http://service-provider/echo/" + str, String.class);
     }
 
+    @GetMapping("/index")
+    public String index(){
+        return restTemplate.getForObject("http://service-provider", String.class);
+    }
+
+    @GetMapping("/services")
+    public Object services(){
+        return client.getServices();
+    }
+
     /**
      * 通过 feign 调用接口
      * @param str
@@ -47,13 +57,13 @@ public class NacosController {
         return echoService.echo(str);
     }
 
-    @GetMapping("/index")
-    public String index(){
-        return restTemplate.getForObject("http://service-provider", String.class);
+    /**
+     * 通过 feign 调用接口获取中国主要省份
+     * @return
+     */
+    @GetMapping("/echo-feign/provinces")
+    public String provinces() {
+        return echoService.provinces();
     }
 
-    @GetMapping("/services")
-    public Object services(){
-       return client.getServices();
-    }
 }
